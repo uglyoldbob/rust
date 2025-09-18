@@ -1711,6 +1711,8 @@ supported_targets! {
 
     ("amdgcn-amd-amdhsa", amdgcn_amd_amdhsa),
 
+    ("x86_64-unknown-doors", x86_64_unknown_doors),
+
     ("xtensa-esp32-none-elf", xtensa_esp32_none_elf),
     ("xtensa-esp32-espidf", xtensa_esp32_espidf),
     ("xtensa-esp32s2-none-elf", xtensa_esp32s2_none_elf),

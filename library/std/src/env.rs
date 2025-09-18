@@ -1067,6 +1067,7 @@ pub mod consts {
     ///
     /// <details><summary>Full list of possible values</summary>
     ///
+    /// * `"doors"`
     /// * `"linux"`
     /// * `"windows"`
     /// * `"macos"`

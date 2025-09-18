@@ -175,6 +175,10 @@ pub(crate) mod key {
             pub(super) use sgx::{Key, get, set};
             use sgx::{create, destroy};
         }
+        target_os = "doors" => {
+            mod doors;
+            pub use doors::*;
+        }
         target_os = "xous" => {
             mod racy;
             #[cfg(test)]

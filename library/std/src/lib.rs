@@ -251,6 +251,7 @@
 #![deny(fuzzy_provenance_casts)]
 #![deny(unsafe_op_in_unsafe_fn)]
 #![allow(rustdoc::redundant_explicit_links)]
+#![cfg_attr(all(doc, target_os = "doors"), allow(rustdoc::broken_intra_doc_links))]
 #![warn(rustdoc::unescaped_backticks)]
 // Ensure that std can be linked against panic_abort despite compiled with `-C panic=unwind`
 #![deny(ffi_unwind_calls)]

@@ -77,6 +77,10 @@ cfg_select! {
         mod zkvm;
         pub use self::zkvm::*;
     }
+    target_os = "doors" => {
+        mod doors;
+        pub use self::doors::*;
+    }
     _ => {
         mod unsupported;
         pub use self::unsupported::*;

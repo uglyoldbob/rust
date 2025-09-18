@@ -12,6 +12,7 @@ use crate::io;
 use crate::os::hermit::io::OwnedFd;
 #[cfg(not(target_os = "hermit"))]
 use crate::os::raw;
+#[cfg(unix)]
 #[cfg(all(doc, not(target_arch = "wasm32")))]
 use crate::os::unix::io::AsFd;
 #[cfg(unix)]

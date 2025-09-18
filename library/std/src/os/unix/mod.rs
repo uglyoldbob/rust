@@ -45,6 +45,8 @@ mod platform {
     pub use crate::os::cygwin::*;
     #[cfg(target_vendor = "apple")]
     pub use crate::os::darwin::*;
+    #[cfg(target_os = "doors")]
+    pub use crate::os::doors::*;
     #[cfg(target_os = "dragonfly")]
     pub use crate::os::dragonfly::*;
     #[cfg(target_os = "emscripten")]

@@ -77,6 +77,9 @@ cfg_select! {
     ) => {
         mod unix;
     }
+    target_os = "doors" => {
+        mod doors;
+    }
     target_os = "windows" => {
         mod windows;
     }

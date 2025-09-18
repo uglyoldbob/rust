@@ -58,6 +58,10 @@ cfg_select! {
         mod unix_legacy;
         pub use unix_legacy::fill_bytes;
     }
+    target_os = "doors" => {
+        mod doors;
+        pub use doors::fill_bytes;
+    }
     target_os = "redox" => {
         mod redox;
         pub use redox::fill_bytes;

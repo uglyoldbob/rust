@@ -67,7 +67,8 @@ pub mod windows {}
     doc,
     any(
         all(target_arch = "wasm32", not(target_os = "wasi")),
-        all(target_vendor = "fortanix", target_env = "sgx")
+        all(target_vendor = "fortanix", target_env = "sgx"),
+        target_os = "doors"
     )
 )))]
 #[cfg(any(target_vendor = "apple", doc))]
@@ -81,7 +82,7 @@ pub mod darwin;
         all(target_vendor = "fortanix", target_env = "sgx")
     )
 )))]
-#[cfg(all(not(target_os = "hermit"), any(unix, doc)))]
+#[cfg(all(not(target_os = "hermit"), not(target_os = "doors"), any(unix, doc)))]
 pub mod unix;
 
 // linux
@@ -89,7 +90,8 @@ pub mod unix;
     doc,
     any(
         all(target_arch = "wasm32", not(target_os = "wasi")),
-        all(target_vendor = "fortanix", target_env = "sgx")
+        all(target_vendor = "fortanix", target_env = "sgx"),
+        target_os = "doors"
     )
 )))]
 #[cfg(any(target_os = "linux", doc))]
@@ -100,7 +102,8 @@ pub mod linux;
     doc,
     any(
         all(target_arch = "wasm32", not(target_os = "wasi")),
-        all(target_vendor = "fortanix", target_env = "sgx")
+        all(target_vendor = "fortanix", target_env = "sgx"),
+        target_os = "doors"
     )
 )))]
 #[cfg(any(target_os = "wasi", doc))]
@@ -114,7 +117,8 @@ pub mod wasip2;
     doc,
     any(
         all(target_arch = "wasm32", not(target_os = "wasi")),
-        all(target_vendor = "fortanix", target_env = "sgx")
+        all(target_vendor = "fortanix", target_env = "sgx"),
+        target_os = "doors"
     )
 )))]
 #[cfg(any(windows, doc))]
@@ -127,6 +131,8 @@ pub mod aix;
 pub mod android;
 #[cfg(target_os = "cygwin")]
 pub mod cygwin;
+#[cfg(target_os = "doors")]
+pub mod doors;
 #[cfg(target_os = "dragonfly")]
 pub mod dragonfly;
 #[cfg(target_os = "emscripten")]
