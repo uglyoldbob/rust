@@ -1,4 +1,4 @@
-use crate::spec::{base, PanicStrategy, Target, TargetMetadata};
+use crate::spec::{PanicStrategy, RelocModel, Target, TargetMetadata, base};
 
 pub(crate) fn target() -> Target {
     let mut base = base::doors::opts();
@@ -6,6 +6,59 @@ pub(crate) fn target() -> Target {
     base.disable_redzone = true;
     base.panic_strategy = PanicStrategy::Abort;
     base.features = "-mmx,-sse,+soft-float".into();
+    base.relocation_model = RelocModel::Pic;
+    base.link_script = Some(
+        r#"
+MEMORY
+{
+  ram (!rx) : org = 0x8000000000, l = 3M
+}
+
+ENTRY(_start)
+
+SECTIONS
+{
+  . = 0x8000000000;
+  .text :
+  {
+    KEEP(*(.text._start))
+    *(.text);
+    *(.text.*);
+    *(.got);
+    *(.got.plt);
+  } > ram
+  .dynamic :
+  {
+
+  } > ram
+  .strings : {
+    *(.dynstr);
+  } > ram
+  .data : {
+    *(.data);
+    *(.data.*);
+  } > ram
+  .rodata : { *(.rodata) } > ram
+  .rela : { *(.rela.dyn); } > ram
+  .strtab : { *(.strtab); } > ram
+  .bss : {
+    *(.bss);
+    *(.bss.*);
+  } > ram
+  .eh_frame_hdr : { *(.eh_frame_hdr) } > ram
+  .eh_frame : { *(.eh_frame) } > ram
+  /DISCARD/ :
+  {
+    *(.dynamic);
+    *(.dynsym);
+    *(.gnu.hash);
+    *(.comment);
+    *(.hash);
+  }
+}
+"#
+        .into(),
+    );
 
     Target {
         llvm_target: "x86_64-unknown-none".into(),
@@ -18,7 +71,7 @@ pub(crate) fn target() -> Target {
             description: None,
             tier: None,
             host_tools: None,
-            std: None,
+            std: Some(true),
         },
     }
 }
