@@ -1,4 +1,4 @@
-use crate::spec::{Cc, CodeModel, LinkerFlavor, Lld, StackProbeType, TargetOptions, crt_objects};
+use crate::spec::{Cc, CodeModel, LinkerFlavor, Lld, StackProbeType, TargetOptions};
 
 pub(crate) fn opts() -> TargetOptions {
     TargetOptions {
@@ -9,8 +9,6 @@ pub(crate) fn opts() -> TargetOptions {
         linker_flavor: LinkerFlavor::Gnu(Cc::No, Lld::Yes),
         stack_probes: StackProbeType::Inline,
         has_thread_local: false,
-        pre_link_objects: crt_objects::new(&[]),
-        post_link_objects: crt_objects::new(&[]),
         ..Default::default()
     }
 }
