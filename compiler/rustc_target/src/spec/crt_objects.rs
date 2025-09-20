@@ -122,3 +122,17 @@ pub(super) fn pre_wasi_self_contained() -> CrtObjects {
 pub(super) fn post_wasi_self_contained() -> CrtObjects {
     new(&[])
 }
+
+pub(super) fn pre_doors() -> CrtObjects {
+    new(&[
+        (LinkOutputKind::DynamicNoPicExe, &["start.o"]),
+        (LinkOutputKind::DynamicPicExe, &["start.o"]),
+        (LinkOutputKind::StaticNoPicExe, &["start.o"]),
+        (LinkOutputKind::StaticPicExe, &["start.o"]),
+    ])
+}
+
+#[allow(dead_code)]
+pub(super) fn post_doors() -> CrtObjects {
+    new(&[])
+}
