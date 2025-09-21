@@ -21,9 +21,9 @@ SECTIONS
   . = 0x8000000000;
   .text :
   {
-    KEEP(*(.text._start))
     *(.text);
     *(.text.*);
+    *(.ltext.*);
     *(.got);
     *(.got.plt);
   } > ram
