@@ -20,7 +20,7 @@ pub(crate) fn opts() -> TargetOptions {
         exe_suffix: "".into(),
         position_independent_executables: false,
         static_position_independent_executables: false,
-        no_builtins: true,
+        no_builtins: false,
         ..Default::default()
     }
 }
