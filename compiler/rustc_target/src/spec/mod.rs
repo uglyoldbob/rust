@@ -1711,6 +1711,7 @@ supported_targets! {
 
     ("amdgcn-amd-amdhsa", amdgcn_amd_amdhsa),
 
+    ("i486-unknown-doors", i486_unknown_doors),
     ("x86_64-unknown-doors", x86_64_unknown_doors),
 
     ("xtensa-esp32-none-elf", xtensa_esp32_none_elf),

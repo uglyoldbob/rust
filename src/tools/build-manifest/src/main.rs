@@ -102,6 +102,7 @@ static TARGETS: &[&str] = &[
     "bpfeb-unknown-none",
     "bpfel-unknown-none",
     "i386-apple-ios",
+    "i486-unknown-doors",
     "i586-unknown-linux-gnu",
     "i586-unknown-linux-musl",
     "i586-unknown-redox",
